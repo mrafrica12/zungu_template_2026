@@ -1,0 +1,93 @@
+/* Shared enquiry menu; refinements apply to the dialog only. */
+.quick-list { display: grid; gap: .65rem; }
+.quick-action {
+  display: flex; align-items: center; gap: 1rem; width: 100%; min-height: 64px; padding: .85rem 1.2rem;
+  text-align: left; text-decoration: none; color: #fff; font: inherit; cursor: pointer;
+  background: rgba(255,255,255,.05); border: 1px solid rgba(217,183,101,.35); border-radius: 2px;
+  transition: background .25s, border-color .25s, transform .25s;
+}
+.quick-action:hover, .quick-action:focus-visible { background: rgba(217,183,101,.14); border-color: var(--gold-light); transform: translateX(3px); }
+.qa-num { font-family: var(--serif); font-size: 1.15rem; font-style: italic; color: var(--gold-light); min-width: 1.6rem; }
+.qa-text { flex: 1; }
+.quick-action strong { display: block; font-family: var(--serif); font-weight: 600; font-size: 1.35rem; line-height: 1.2; letter-spacing: .01em; }
+.quick-action small { display: block; font-size: .8rem; color: rgba(255,255,255,.7); letter-spacing: .03em; }
+.quick-action svg { width: 20px; height: 20px; flex-shrink: 0; color: var(--gold-light); }
+[hidden] { display: none !important; }
+.btn--gold { background: var(--gold-light); border-color: var(--gold-light); color: var(--emerald-deep); }
+.btn--gold:hover { background: #ecd08a; border-color: #ecd08a; }
+
+/* Concierge dialog */
+.concierge {
+  margin: auto; width: min(100% - 1.25rem, 32rem); max-height: calc(100dvh - 1.5rem); overflow: auto;
+  border: 1px solid var(--gold); border-radius: 4px; padding: 0; color: #fff;
+  background: radial-gradient(120% 80% at 50% 0, #0f5a47 0, var(--emerald-deep) 60%, #052a21 100%);
+  box-shadow: 0 0 0 5px rgba(8,53,42,.9), 0 0 0 6px rgba(217,183,101,.45), 0 30px 90px rgba(0,0,0,.55);
+}
+.concierge::backdrop { background: rgba(4, 24, 19, .72); backdrop-filter: blur(4px); }
+.concierge[open] { animation: rise .35s ease; }
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.concierge-head { display: flex; gap: 1rem; align-items: flex-start; padding: 1.6rem 1.5rem 1.2rem; border-bottom: 1px solid rgba(217,183,101,.3); position: relative; }
+.concierge-head img { width: 56px; height: 57px; flex-shrink: 0; filter: drop-shadow(0 4px 12px rgba(0,0,0,.4)); }
+.concierge-head .eyebrow { color: var(--gold-light); margin-bottom: .2rem; font-size: .68rem; }
+.concierge-head h2 { color: #fff; font-size: clamp(2.1rem, 8vw, 2.7rem); margin: 0; font-style: italic; }
+.concierge-head p:last-child { color: rgba(255,255,255,.8); font-size: .92rem; margin-top: .4rem; }
+.concierge-close { position: absolute; top: .6rem; right: .6rem; width: 44px; height: 44px; background: none; border: 0; color: var(--gold-light); font-size: 1.9rem; line-height: 1; }
+.concierge-body { padding: 1.3rem 1.5rem .5rem; }
+.concierge-foot { display: flex; flex-wrap: wrap; gap: .1rem 1.5rem; padding: .8rem 1.5rem 1.3rem; }
+.concierge-foot a { color: var(--gold-light); font-size: .78rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; text-decoration: none; padding: .55rem 0; }
+.concierge-foot a:hover { color: #fff; }
+
+/* Concierge form */
+#ask-form { display: grid; gap: 1rem; }
+.field { display: grid; gap: .35rem; }
+.field > span { font-size: .7rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--gold-light); }
+.field input, .field textarea {
+  width: 100%; min-height: 48px; padding: .6rem .8rem; font: inherit; color: #fff; color-scheme: dark;
+  background: rgba(255,255,255,.07); border: 0; border-bottom: 1.5px solid rgba(217,183,101,.6); border-radius: 2px;
+}
+.field textarea { resize: vertical; }
+.field input::placeholder, .field textarea::placeholder { color: rgba(255,255,255,.45); }
+.field input:focus, .field textarea:focus { outline: 0; background: rgba(255,255,255,.12); border-bottom-color: #fff; box-shadow: 0 2px 0 0 var(--gold-light); }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
+.stepper { display: grid; grid-template-columns: 44px 1fr 44px; align-items: center; background: rgba(255,255,255,.07); border-bottom: 1.5px solid rgba(217,183,101,.6); border-radius: 2px; }
+.stepper button { height: 48px; background: none; border: 0; color: var(--gold-light); font-size: 1.4rem; }
+.stepper button:hover { background: rgba(217,183,101,.16); }
+.stepper input { min-height: 48px; padding: 0; text-align: center; background: none; border: 0; box-shadow: none; -moz-appearance: textfield; appearance: textfield; }
+.stepper input::-webkit-inner-spin-button, .stepper input::-webkit-outer-spin-button { -webkit-appearance: none; }
+.nights { min-height: 1.2em; margin-top: -.4rem; font-family: var(--serif); font-style: italic; font-size: 1.1rem; color: var(--gold-light); }
+.form-error { min-height: 1.2em; color: #ffd3c7; font-size: .88rem; }
+.form-actions { display: grid; grid-template-columns: 1fr 2fr; gap: .7rem; }
+.form-note { font-size: .78rem; color: rgba(255,255,255,.65); text-align: center; padding-bottom: .5rem; }
+@media (max-width: 380px) { .field-row { grid-template-columns: 1fr; } }
+
+
+.concierge{--serif:'Cormorant Garamond',Georgia,serif;--emerald-deep:#07382d;--gold:#a99055;--gold-light:#d9bd7b;font-family:Jost,Arial,sans-serif;width:min(calc(100% - 28px),440px);max-height:calc(100dvh - 32px);border:1px solid #ac92566b;border-radius:8px;box-shadow:0 24px 80px #00180f66;background:linear-gradient(155deg,#104d3d,#062d24);line-height:1.5}
+.concierge-head{padding:24px 26px 19px;gap:15px;align-items:center}
+.concierge-head>div{padding-right:15px;min-width:0}
+.concierge-head img{width:46px;height:47px;object-fit:contain}
+.concierge-head .eyebrow{font-size:9px;font-weight:500;letter-spacing:2.2px;margin:0 0 4px;text-transform:uppercase}
+.concierge-head h2{font-family:var(--serif);font-size:32px;font-weight:500;line-height:1.1;letter-spacing:0}
+.concierge-head p:last-child{font-size:12px;line-height:1.65;margin-top:9px;font-weight:400;color:#d2ded7}
+.concierge-close{top:8px;right:8px;font-size:26px;cursor:pointer}
+.concierge-body{padding:17px 22px 5px}
+.concierge .quick-list{list-style:none;padding:0;margin:0;display:grid;gap:7px}
+.concierge .quick-action{display:flex;align-items:center;gap:13px;width:100%;min-height:57px;padding:10px 14px;border:1px solid #d9bd7b33;background:#ffffff04;border-radius:3px}
+.concierge .qa-num{font-size:13px;min-width:19px;font-weight:400}
+.concierge .qa-text{min-width:0}
+.concierge .quick-action strong{font-size:20px;line-height:1.2;font-weight:500;letter-spacing:0}
+.concierge .quick-action small{font-size:10px;line-height:1.5;letter-spacing:.2px;margin-top:3px;color:#bdcec4}
+.concierge .quick-action svg{width:16px;height:16px}
+.concierge .quick-action:hover{background:#d9bd7b0f;transform:none;border-color:#d9bd7b88}
+.concierge .quick-action:focus-visible{outline:1px solid #e4cb91;outline-offset:3px;box-shadow:none;transform:none}
+.concierge-foot{padding:13px 24px 19px;gap:6px 18px}
+.concierge-foot a{font-size:9px;font-weight:500;letter-spacing:1px;padding:5px 0}
+.concierge .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 12px;font:500 10px Jost,Arial,sans-serif;text-transform:uppercase;letter-spacing:1px;border:1px solid #d9bd7b80;border-radius:2px;cursor:pointer}
+.concierge .btn--ghost-light{background:transparent;color:#fff}
+.concierge .btn--gold{background:#d9bd7b;color:#07382d}
+.concierge input,.concierge textarea{font-size:13px;box-sizing:border-box}
+.concierge .field>span{font-size:9px;letter-spacing:1.3px}
+.concierge .form-note{font-size:10px;line-height:1.6;margin:0}
+.concierge .form-error{font-size:11px}
+body:has(.concierge[open]){overflow:hidden}
+@media(max-width:480px){.concierge-head{padding:20px 20px 16px;gap:12px}.concierge-head img{width:38px;height:39px}.concierge-head h2{font-size:29px}.concierge-body{padding:14px 16px 5px}.concierge-foot{padding:12px 18px 17px}.concierge .quick-action strong{font-size:19px}.concierge .quick-action{padding:9px 12px;min-height:56px}}
+@media(prefers-reduced-motion:reduce){.concierge[open]{animation:none}.concierge .quick-action{transition:none}}
