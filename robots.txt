@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+# DOMAIN TODO: tools/finalize-domain.py adds the Sitemap line once the live domain is known.
